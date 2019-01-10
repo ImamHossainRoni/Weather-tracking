@@ -4,10 +4,13 @@ from .models import City
 from .forms import CityForm
 # Create your views here.
 def index(request):
+    ''' Do not use my api key.Just try to create an account in openweathermap.org and get own api key'''
+
     url ='http://api.openweathermap.org/data/2.5/weather?q={}&units=imperial&appid=c99a630bdb6897a61e035784ec774d76'
     
     if request.method == 'POST':
-        pass
+        form = CityForm(request.POST)
+        form.save()
     form = CityForm()
     cities = City.objects.all()
     weather_data = []
